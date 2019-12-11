@@ -18,6 +18,18 @@ class Method2
             arr[i] = 0;
     }
 
+    static void CreateArray1(int[] arr,int size)
+    {
+        arr = new int[size];        //메인의 어레이와 다르다.
+        for (int i = 0; i < size; i++) arr[i] = i;
+    }
+
+    static void CreateArray1(ref int[] arr, int size)
+    {
+        arr = new int[size];        //메인의 어레이와 같다.
+        for (int i = 0; i < size; i++) arr[i] = i;
+    }
+
     public static void Main()
     {
         int age = 10;
@@ -36,7 +48,11 @@ class Method2
         d = 0;
         Console.WriteLine($"{c},{d}");
 
-
+        int[] arr = null;
+        CreateArray1(arr, 3);
+        //foreach (var e in arr) Console.Write(e + " "); //오류
+        CreateArray1(ref arr, 3);
+        foreach (var e in arr) Console.Write(e + " ");
     }
 }
 
